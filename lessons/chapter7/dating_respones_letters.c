@@ -31,18 +31,13 @@ int main() {
       {"Matt", SECOND_CHANCE},
       {"William", MARRIAGE},
   };
+
+  void (*reply_functions[])(response) = {dump, second_chance, marriage};
+
   int i;
   for (i = 0; i < 4; i++) {
-    switch (responses[i].type) {
-    case DUMP:
-      dump(responses[i]);
-      break;
-    case SECOND_CHANCE:
-      second_chance(responses[i]);
-      break;
-    default:
-      marriage(responses[i]);
-    }
+    reply_functions[responses[i].type](responses[i]);
   }
+
   return 0;
 }
