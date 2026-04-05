@@ -24,6 +24,8 @@ void marriage(response r) {
   puts("us with a proposal of marriage!");
 }
 
+void (*reply_functions[])(response) = {dump, second_chance, marriage};
+
 int main() {
   response responses[] = {
       {"Mike", DUMP},
@@ -31,8 +33,6 @@ int main() {
       {"Matt", SECOND_CHANCE},
       {"William", MARRIAGE},
   };
-
-  void (*reply_functions[])(response) = {dump, second_chance, marriage};
 
   int i;
   for (i = 0; i < 4; i++) {
