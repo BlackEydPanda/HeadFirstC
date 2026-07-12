@@ -1,8 +1,8 @@
 encrypt.o: encrypt.c
-	gcc -c encrypt.c -o ./build/encrypt.o
+	gcc -c encrypt.c -o encrypt.o
 checksum.o: checksum.c
-	gcc -c checksum.c -o ./build/checksum.o
+	gcc -c checksum.c -o checksum.o
 libhfsecurity.a: encrypt.o checksum.o
-	ar -rcs ./build/lib/libhfsecurity.a ./build/encrypt.o ./build/checksum.o
+	ar -rcs libhfsecurity.a encrypt.o checksum.o
 encryption_test: encryption_test.c libhfsecurity.a
-	gcc -I./headers encryption_test.c -L./build/lib -lhfsecurity -o ./build/encryption_test
+	gcc -I./headers encryption_test.c -lhfsecurity -o encryption_test
